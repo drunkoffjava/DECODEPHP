@@ -1,20 +1,3 @@
-# DECODEPHP
-PHP FRAMEWORKS
-# DECODE Framework Documentation
-
-* ██████╗ ███████╗ ██████╗ ██████╗ ██████╗ ███████╗
- * ██╔══██╗██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝
- * ██║  ██║█████╗  ██║     ██║   ██║██║  ██║█████╗  
- * ██║  ██║██╔══╝  ██║     ██║   ██║██║  ██║██╔══╝  
- * ██████╔╝███████╗╚██████╗╚██████╔╝██████╔╝███████╗
- * ╚═════╝ ╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝
- *                                                    
- * DECODE Framework - Core System
- * 
- * @package  DECODE Framework
- * @author   Drunkoffjava
- * @version  1.0.0
- * @license  MIT License
 
 ## Table of Contents
 1. [Framework Overview](#overview)
