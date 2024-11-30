@@ -1,0 +1,40 @@
+RewriteEngine On
+RewriteBase /php%20cheat/
+
+# Allow direct access to assets
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^decodephp/themes/default/assets/(css|js|images)/(.*)$ decodephp/themes/default/assets/$1/$2 [L]
+
+# Handle admin routes with parameters
+RewriteRule ^admin/roles/edit/([0-9]+)/?$ index.php [QSA,L]
+RewriteRule ^admin/roles/delete/([0-9]+)/?$ index.php [QSA,L]
+
+# Route all other requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Security Headers
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-Content-Type-Options "nosniff"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+Header set X-Permitted-Cross-Domain-Policies "none"
+Header set X-Content-Security-Policy "default-src 'self'"
+
+# Protect sensitive directories
+RewriteRule ^(decodephp/config|decodephp/core) - [F,L]
+
+# Protect sensitive files
+<FilesMatch "^(\.env|composer\.json|composer\.lock|create_database\.sql|\.htaccess|\.git)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Disable directory listing
+Options -Indexes
+
+# Handle errors
+ErrorDocument 404 /php%20cheat/index.php
+ErrorDocument 403 /php%20cheat/index.php
